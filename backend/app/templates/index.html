@@ -14,13 +14,13 @@
             <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
             <h3>{{ item.name }}</h3>
             <p>Цена: {{ item.price }} руб.</p>
-            <form action="{{ url_for('add_to_cart') }}" method="POST">
+            <form action="{{ url_for('main.add_to_cart') }}" method="POST">
                 <input type="hidden" name="item_id" value="{{ id }}">
                 <button type="submit">Положить в корзину</button>
             </form>
         </div>
         {% endfor %}
     </div>
-    <a href="{{ url_for('cart') }}" class="cart-link">Корзина ({{ session.get('cart', [])|length }})</a>
+    <a href="{{ url_for('main.cart') }}" class="cart-link">Корзина ({{ session.get('cart', [])|length }})</a>
 </body>
 </html>

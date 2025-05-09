@@ -18,13 +18,13 @@
             </div>
             {% endfor %}
             <p>Общая стоимость: {{ total_price }} руб.</p>
-            <form action="{{ url_for('order') }}" method="POST">
+            <form action="{{ url_for('main.order') }}" method="POST">
                 <button type="submit">Оформить заказ</button>
             </form>
         {% else %}
             <p>Ваша корзина пуста.</p>
         {% endif %}
     </div>
-    <a href="{{ url_for('index') }}">Вернуться в меню</a>
+    <a href="{{ url_for('main.index') }}">Вернуться в меню</a>
 </body>
 </html>
