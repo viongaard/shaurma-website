@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ваша корзина</h1>
+    <div class="cart-items">
+        {% if cart_items %}
+            {% for item in cart_items %}
+            <div class="cart-item">
+                <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}">
+                <h3>{{ item.name }}</h3>
+                <p>Цена: {{ item.price }} руб.</p>
+            </div>
+            {% endfor %}
+            <p>Общая стоимость: {{ total_price }} руб.</p>
+            <form action="{{ url_for('main.order') }}" method="POST">
+                <button type="submit">Оформить заказ</button>
+            </form>
+        {% else %}
+            <p>Ваша корзина пуста.</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('main.index') }}">Вернуться в меню</a>
+</body>
+</html>
